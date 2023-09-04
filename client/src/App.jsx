@@ -17,6 +17,7 @@ export default function App() {
   axios.defaults.baseURL = VITE_SERVER_URL;
   axios.defaults.withCredentials = true;
 
+  console.log('VITE URL', VITE_SERVER_URL)
   const { user, admin } = useAuthContext();
 
   return (
