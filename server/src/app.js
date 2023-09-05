@@ -14,6 +14,8 @@ app.use(cors(
   }
 ));
 
+
+
 connectDB();
 
 app.get("/", (req, res) => res.send("Hello world!"));
@@ -32,5 +34,12 @@ app.use('/api/salesman', salesmanRoutes);
 // auth routes
 const authRoutes = require("./routes/authRoutes");
 app.use('/api/auth', authRoutes);
+
+// error handling
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  console.error(err)
+  res.status(500).send("Something broke!");
+});
 
 module.exports = app;
