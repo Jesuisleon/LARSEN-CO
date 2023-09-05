@@ -61,18 +61,21 @@ export default function ArticleForm({articles, handleArticles, total, handleTota
       <button onClick={() => addArticle()} className="btn btn-yellow justify-center">
         New Article
       </button>
-     {total && ( <div className="flex items-center gap-4">
-        <label htmlFor="total" className="text-red-600">
+     {total && ( <div className="flex items-center gap-2 text-3xl font-bold text-red-600">
+        <label htmlFor="total">
           Total
         </label>
-        <input
-          type="number"
-          id="total"
-          name="total"
-          readOnly
-          className="invisible-input"
-          value={total}
-        />
+       <div>
+         <input
+         type="number"
+         id="total"
+         name="total"
+         readOnly
+         className="invisible-input text-right w-32 font-bold text-3xl "
+         value={total}
+       />
+         $
+       </div>
       </div>)}
     </div>
   );

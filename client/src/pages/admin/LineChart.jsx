@@ -10,6 +10,7 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+import lodash from "lodash";
 
 ChartJS.register(
   CategoryScale,
@@ -26,7 +27,6 @@ import LoadingSpinner from "components/LoadingSpinner.jsx";
 
 export default function LineChart() {
   const { getAllReport, isLoading, error } = useReport();
-  const [report, setReport] = useState([]);
 
   const options = {
     responsive: true,
@@ -36,7 +36,7 @@ export default function LineChart() {
       },
       title: {
         display: true,
-        text: "Sales report",
+        text: "Total Sales report",
       },
     },
   };
@@ -74,13 +74,14 @@ export default function LineChart() {
     if (!reports) return;
     const newReports = reports.reduce(
         (acc, report) => {
+          // La date est enregistrée en format ISO (YYYY-MM-DD)
           const month = parseInt(report.date.split("-")[1]);
           const total = report.total_sales;
 
-          acc.datasets[1].data[month - 1] += total;
+          acc.datasets[1].data[month - 1] += total
           return acc;
         },
-        { ...data }
+        lodash.cloneDeep(data)
       );
 
       setData(newReports);

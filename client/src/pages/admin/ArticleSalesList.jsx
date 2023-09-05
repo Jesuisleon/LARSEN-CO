@@ -40,10 +40,14 @@ export default function ArticleList() {
       return b.total - a.total;
     });
 
+    newArticleList.map((article) => {
+      article.total = article.total + "$";
+    });
+
      setArticleList(newArticleList);
    };
-   
-  
+
+
   useEffect(() => {
     getArticleList();
   }, []);

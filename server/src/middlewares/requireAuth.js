@@ -24,7 +24,7 @@ const requireAuth = async (req, res, next) => {
 
   try {
     const salesman = await verifyToken(token);
-    req.salesman = salesman;
+    req.payload = salesman;
     next();
   }
   catch (err) {
@@ -33,7 +33,7 @@ const requireAuth = async (req, res, next) => {
 };
 
 const requireAdmin = (req, res, next) => {
-    const isAdmin = req.salesman.isAdmin;
+    const isAdmin = req.payload.isAdmin;
     if (!isAdmin) {
        return res.status(401).json({ error: "You are not authorized" });
     }

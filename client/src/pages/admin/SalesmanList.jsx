@@ -13,7 +13,7 @@ export default function SalesmanList() {
   useEffect(() => {
     getAllSalesmen().then((data) => {
       const newSalesmanList = data.map((salesman) => {
-        return { _id: salesman._id, name: salesman.name, email: salesman.email, total_sales: salesman.total_sales + " $" };
+        return { _id: salesman._id, name: salesman.name, email: salesman.email, total_sales: salesman.total_sales + "$" };
       });
       setSalesmanList(newSalesmanList);
     });

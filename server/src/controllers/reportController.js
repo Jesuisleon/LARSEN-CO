@@ -1,3 +1,5 @@
+const validator = require("validator");
+
 const Report = require("../models/report");
 const Client = require("../models/client");
 
@@ -44,6 +46,10 @@ exports.createReport = async (req, res) => {
 
 exports.updateReport = async (req, res) => {
   try {
+    // Verify if email is valid
+    const validEmail = validator.isEmail(req.body.client.contact);
+    if (!validEmail) throw Error("Email is not valid");
+
     const client = await Client.findByIdAndUpdate(req.body.client._id, req.body.client);
     if (!client) throw Error("Something went wrong updating the report");
 
@@ -75,7 +81,6 @@ exports.updateReport = async (req, res) => {
 
     res.status(200).json({ success: true });
   } catch (err) {
-    console.log(err)
     res.status(400).json({ message: err.message, success: false });
   }
 };
@@ -83,7 +88,7 @@ exports.updateReport = async (req, res) => {
 exports.getAllReportsBySalesman = async (req, res) => {
   try {
     const salesmanId = req.params.id;
-    if (salesmanId !== req.salesman._id.toString() && !req.salesman.isAdmin) {
+    if (salesmanId !== req.payload._id.toString() && !req.payload.isAdmin) {
       throw Error("You are not authorized to view this report");
     }
     const reports = await Report.find({ salesman: salesmanId })

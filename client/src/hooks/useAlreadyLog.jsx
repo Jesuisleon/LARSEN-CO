@@ -11,8 +11,6 @@ export const useAlreadyLog = () => {
       navigate('/admin');
     } else if (user) {
       navigate(`/salesman/${user.id}`);
-    } else {
-      navigate('/');
     }
   }, [user]);
 }

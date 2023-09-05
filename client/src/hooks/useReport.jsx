@@ -33,7 +33,7 @@ export const useReport = () => {
       return json;
     } catch (error) {
       setIsLoading(false);
-      setError(error.message);
+      setError(error.response.data.message);
     }
   }
 
@@ -48,7 +48,7 @@ export const useReport = () => {
       return json;
     } catch (error) {
       setIsLoading(false);
-      setError(error.message);
+      setError(error.response.data.message);
     }
   }
 
@@ -63,7 +63,7 @@ export const useReport = () => {
       return json;
     } catch (error) {
       setIsLoading(false);
-      setError(error.message);
+      setError(error.response.data.message);
     }
   }
 
@@ -77,7 +77,7 @@ export const useReport = () => {
       navigate(`/salesman/${salesmanId}`);
     } catch (error) {
       setIsLoading(false);
-      setError(error.message);
+      setError(error.response.data.message);
     }
   }
 
@@ -92,7 +92,7 @@ export const useReport = () => {
       return json;
     } catch (error) {
       setIsLoading(false);
-      setError(error.message);
+      setError(error.response.data.message);
     }
   }
 
