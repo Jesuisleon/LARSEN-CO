@@ -61,7 +61,7 @@ export default function ArticleForm({articles, handleArticles, total, handleTota
       <button onClick={() => addArticle()} className="btn btn-yellow justify-center">
         New Article
       </button>
-     {total && ( <div className="flex items-center gap-2 text-3xl font-bold text-red-600">
+     {total && ( <div className="flex items-center gap-2 font-thin text-2xl text-red-600">
         <label htmlFor="total">
           Total
         </label>
@@ -71,7 +71,7 @@ export default function ArticleForm({articles, handleArticles, total, handleTota
          id="total"
          name="total"
          readOnly
-         className="invisible-input text-right w-32 font-bold text-3xl "
+         className="invisible-input text-right w-32 font-thin text-2xl "
          value={total}
        />
          $

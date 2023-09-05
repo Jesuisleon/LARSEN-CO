@@ -59,7 +59,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .btn-red {
-  @apply text-gray-800 bg-red-500;
+  @apply text-white bg-red-500;
 }
 
 .btn-red:hover {
@@ -71,7 +71,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .btn-green {
-  @apply text-gray-800 bg-green-600;
+  @apply text-white bg-green-600;
 }
 
 .btn-green:hover {
