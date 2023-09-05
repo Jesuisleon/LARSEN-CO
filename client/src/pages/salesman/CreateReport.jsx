@@ -107,7 +107,7 @@ export default function CreateReport() {
   }, []);
 
   const submitIsDisabled = useMemo(() => {
-    return !date || !report || !articlesSales || !client.contact;
+    return !date || !report || articlesSales.length === 0 || !totalSales || !client.contact || !client.name || !client.address
   }, [date, report, articlesSales, totalSales, client]);
 
   const addProvisionalSales = () => {
@@ -244,6 +244,7 @@ export default function CreateReport() {
         )}
         <button
           type="submit"
+          tabIndex={submitIsDisabled ? -1 : 0}
           disabled={isLoading || submitIsDisabled}
           className={`btn btn-green ${submitIsDisabled && "cursor-not-allowed"}`}
           onClick={handleSubmit}
