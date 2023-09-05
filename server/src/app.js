@@ -1,11 +1,20 @@
 const express = require("express");
 const connectDB = require("../config/db");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cookieParser());
+
+const corsOptions = {
+  origin: process.env.FRONTEND_URL,
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 connectDB();
 
