@@ -14,10 +14,9 @@ import AdminDashboard from "pages/admin/Dashboard";
 
 export default function App() {
   const { VITE_SERVER_URL } = import.meta.env;
-  axios.defaults.baseURL = VITE_SERVER_URL || "http://3.75.158.163:5050";
+  axios.defaults.baseURL = VITE_SERVER_URL;
   axios.defaults.withCredentials = true;
 
-  console.log('VITE URL', VITE_SERVER_URL)
   const { user, admin } = useAuthContext();
 
   return (

@@ -2,13 +2,15 @@ import { useState } from "react";
 
 import { useLogin } from "hooks/useLogin";
 import { useAlreadyLog } from "hooks/useAlreadyLog";
+import axios from "axios";
 
 export const Login = () => {
   useAlreadyLog();
 
   const { VITE_SERVER_URL } = import.meta.env;
 
-  console.log('VITE URL', VITE_SERVER_URL)
+  axios.defaults.baseURL = VITE_SERVER_URL;
+  axios.defaults.withCredentials = true;
 
   const [loginUser, setLoginUser] = useState({
     email: "@example.com",
