@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import StackedList from "components/StackedList";
 
@@ -10,13 +10,16 @@ import LoadingSpinner from "components/LoadingSpinner";
 
 export default function ReportList() {
   const navigate = useNavigate();
+  const { salesmanId } = useParams();
+
+
   const { user } = useAuthContext();
   const { getAllReportBySalesman, deleteReport, isLoading } = useReport();
 
   const [reports, setReports] = useState([]);
 
   const fetchReports = async () => {
-    const reports = await getAllReportBySalesman(user.id);
+    const reports = await getAllReportBySalesman(salesmanId);
     const newReports = reports.map((report) => {
       return {
         ...report,

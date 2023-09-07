@@ -22,6 +22,9 @@ const verifyClient = async (req, res) => {
 exports.createReport = async (req, res) => {
 
   try {
+    const validEmail = validator.isEmail(req.body.client.contact);
+    if (!validEmail) throw Error("Email is not valid");
+
     let verifiedClient = await verifyClient(req, res);
 
       let newReport = new Report({
