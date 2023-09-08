@@ -4,7 +4,7 @@ import {Bars3Icon} from "@heroicons/react/20/solid";
 import {Link} from "react-router-dom";
 import {ArrowRightOnRectangleIcon, ChartBarIcon, PencilSquareIcon} from "@heroicons/react/24/solid";
 
-export default function DropdownReportMenu({admin, user, handleClickLogout}) {
+export default function DropdownReportMenu({isAdmin, user, handleClickLogout}) {
 
   return (
     <div className="text-right md:hidden">
@@ -28,7 +28,7 @@ export default function DropdownReportMenu({admin, user, handleClickLogout}) {
           leaveTo="transform opacity-0 scale-95"
         >
           <Menu.Items className="absolute right-2 mt-2 w-28 origin-top-right divide-y divide-gray-300 rounded-md bg-gray-100 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-100">
-            {admin &&
+            {isAdmin &&
               <div className="px-1 py-1">
               <Menu.Item>
                 {/*ICON */}

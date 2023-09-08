@@ -4,7 +4,7 @@ import { useLogout } from "hooks/useLogout";
 import DropdownNavMenu from "components/DropdownNavMenu";
 import {Fragment} from "react";
 
-export default function Nav({ user, admin }) {
+export default function Nav({ user, isAdmin }) {
   const { logout } = useLogout();
 
   const handleClickLogout = async () => {
@@ -29,11 +29,11 @@ export default function Nav({ user, admin }) {
           {user ? (
             <Fragment>
               {/* PHONE MENU */}
-              <DropdownNavMenu admin={admin} user={user} handleClickLogout={handleClickLogout}/>
+              <DropdownNavMenu isAdmin={isAdmin} user={user} handleClickLogout={handleClickLogout}/>
               {/* MENU */}
               <div className='hidden md:block'>
                 <div className="space-x-4">
-                  {admin &&
+                  {isAdmin &&
                     <Link className="btn btn-yellow" to="/admin">
                       Admin
                     </Link>}
